@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="navbar">
+        <a href="#"><img class="logo" src="../../assets/homeImages/logo/logo.png" alt="logo"></a>
+        <div class="title">
+            <a href="#"><small>find</small>Builders</a>
+        </div>
+        <ul class="menu">
+            <li><a routerLink="/home" href="#">Home</a></li>   <!-- mat-button -->
+            <li id="active"><a routerLink="/about" href="#">About</a></li>
+            <li><a routerLink="/category" href="#">Category</a></li>
+            <li><a *ngIf="!authService.isLoggednIn()" routerLink="/register" href="#">Register</a></li>
+            <li><a *ngIf="!authService.isLoggednIn()" routerLink="/logIn" href="#">LogIn</a></li>
+            <li><a *ngIf="authService.isLoggednIn()" routerLink="/profile" href="#">Profile</a></li>
+            <li><a *ngIf="authService.isLoggednIn()" (click)="logOut()">LogOut</a></li>
+        </ul>
+    </div>
+
+    <div class="extra"></div>
+
+    <div class="details">
+        <mat-card class="matCard">
+            <mat-card-header>
+              <mat-card-title><h2>Constructor Details</h2></mat-card-title>
+              <mat-card-subtitle>{{builder.cType}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                    <img src="http://localhost:3000/profilePic/{{builder.nic}}.jpg" width="200px" alt="">
+                    <mat-divider></mat-divider>
+                    <br>
+              <dl>
+                <dt>Name:</dt>
+                <dd>{{builder.fName +" "+ builder.mName +" "+ builder.lName}}</dd><br>
+                <dt>Address:</dt>
+                <dd>{{builder.line1 +", "+ builder.line2 +", "+ builder.line3}}</dd><br>
+                <dt>City:</dt>
+                <dd>{{builder.city}}</dd><br>
+                <dt>Distric:</dt>
+                <dd>{{builder.distric}}</dd><br>
+                <!-- <dt>Age:</dt>
+                <dd>{{builder.birthday}}</dd><br> -->
+                <!-- <dd>{{byear | date:'yyyy'}}</dd> -->
+                <dt>Gender:</dt>
+                <dd>{{builder.gender}}</dd><br>
+                <dt>Email:</dt>
+                <dd>{{builder.email}}</dd><br>
+                <dt>Contact no.:</dt>
+                <dd>
+                    {{builder.phone}}&nbsp;
+                    <a href="tel:{{builder.phone}}"><button mat-raised-button color="primary"><i class="material-icons">call</i></button></a>
+                </dd>
+              </dl>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="matCard">
+            <mat-card-header class="matHeader">
+                <mat-card-title><h2><small>Other construction of</small> {{builder.fName}}</h2></mat-card-title>
+            </mat-card-header>
+            <mat-card-content> 
+                <mat-list>
+                    <h4>Description:</h4>
+                    <mat-list-item>
+                        <p>made a home in mawanella area</p>
+                    </mat-list-item>
+                    <img class="image" src="http://localhost:3000/otherConstructions/img(1).jpg" alt="">
+                    <img class="image" src="http://localhost:3000/otherConstructions/img(2).jpg" alt="">
+                    <img class="image" src="http://localhost:3000/otherConstructions/img(3).jpg" alt=""><br><br>
+                    <button mat-raised-button color="primary">more...</button>
+                </mat-list>
+                <mat-list>
+                    <h4>Description:</h4>
+                    <mat-list-item>
+                        <p>A home repaire in nagoda</p>
+                    </mat-list-item>
+                    <img class="image" src="http://localhost:3000/otherConstructions/img(4).jpg" alt="">
+                    <img class="image" src="http://localhost:3000/otherConstructions/img(5).jpg" alt="">
+                    <img class="image" src="http://localhost:3000/otherConstructions/img(6).jpg" alt="">
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

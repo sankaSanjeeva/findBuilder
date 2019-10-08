@@ -1,0 +1,25 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ConstructorDetailsComponent } from './constructor-details.component';
+
+describe('ConstructorDetailsComponent', () => {
+  let component: ConstructorDetailsComponent;
+  let fixture: ComponentFixture<ConstructorDetailsComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ ConstructorDetailsComponent ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ConstructorDetailsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

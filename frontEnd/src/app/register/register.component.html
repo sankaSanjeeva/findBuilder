@@ -1,0 +1,161 @@
+<div class="register">
+    <div class="navbar">
+        <a href="#"><img class="logo" src="../../assets/homeImages/logo/logo.png" alt="logo"></a>
+        <div class="title">
+            <a href="#"><small>find</small>Builders</a>
+        </div>
+        <ul class="menu">
+          <li><a routerLink="/home" href="#">Home</a></li>   <!-- mat-button -->
+          <li id="active"><a routerLink="/about" href="#">About</a></li>
+          <li><a routerLink="/category" href="#">Category</a></li>
+          <li><a *ngIf="!authService.isLoggednIn()" routerLink="/register" href="#">Register</a></li>
+          <li><a *ngIf="!authService.isLoggednIn()" routerLink="/logIn" href="#">LogIn</a></li>
+          <li><a *ngIf="authService.isLoggednIn()" routerLink="/profile" href="#">Profile</a></li>
+          <li><a *ngIf="authService.isLoggednIn()" (click)="logOut()">LogOut</a></li>
+        </ul>
+    </div>
+
+    <div class="extra"></div>
+
+    <div class="content">
+      <div class="matCard">
+          <mat-card>
+              <section>
+                <h2>Registration</h2>
+              </section>
+              <mat-divider></mat-divider>
+              <br>
+              <form [formGroup]="registerForm">
+          
+                <section>
+                  <span>Name</span>
+                  <br>
+                  <mat-form-field class="threeDivider">
+                    <input matInput placeholder="first name" formControlName="fName" [errorStateMatcher]="matcher" #fName>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('fName').valid && registerForm.get('fName').touched">Please enter First Name</span>
+                    </mat-error>
+                  </mat-form-field>
+          
+                  <mat-form-field class="threeDivider">
+                    <input matInput placeholder="middle name" formControlName="mName" #mName>
+                  </mat-form-field>
+          
+                  <mat-form-field class="threeDivider">
+                    <input matInput placeholder="last name" formControlName="lName" #lName>
+                  </mat-form-field>
+                </section>
+          
+                <section>
+                  <span>Address</span>
+                  <br>
+                  <mat-form-field class="threeDivider">
+                    <input matInput placeholder="line1" formControlName="line1" [errorStateMatcher]="matcher" #line1>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('line1').valid && registerForm.get('line1').touched">Please enter Address Line 1</span>
+                    </mat-error>
+                  </mat-form-field>
+          
+                  <mat-form-field class="threeDivider">
+                    <input matInput placeholder="line2" formControlName="line2" [errorStateMatcher]="matcher" #line2>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('line2').valid && registerForm.get('line2').touched">Please enter Address Line 2</span>
+                    </mat-error>
+                  </mat-form-field>
+          
+                  <mat-form-field class="threeDivider">
+                    <input matInput placeholder="line3" formControlName="line3" [errorStateMatcher]="matcher" #line3>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('line3').valid && registerForm.get('line3').touched">Please enter Address Line 3</span>
+                    </mat-error>
+                  </mat-form-field>
+                  <br>
+          
+                  <mat-form-field class="threeDivider">
+                    <input matInput placeholder="city" formControlName="city" [errorStateMatcher]="matcher" #city>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('city').valid && registerForm.get('city').touched">Please enter City</span>
+                    </mat-error>
+                  </mat-form-field>
+          
+                  <mat-form-field class="threeDivider">
+                    <mat-select placeholder="distric" formControlName="distric" [errorStateMatcher]="matcher" #distric>
+                      <mat-option *ngFor="let distric of districs" [value]="distric">{{distric}}</mat-option>
+                    </mat-select>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('distric').valid && registerForm.get('distric').touched">Please enter Distric</span>
+                    </mat-error>
+                  </mat-form-field>
+                </section>
+                  
+                  <mat-form-field class="threeDivider">
+                    <input matInput [matDatepicker]="picker" placeholder="birthday" formControlName="birthday" [errorStateMatcher]="matcher" #birthday>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('birthday').valid && registerForm.get('birthday').touched">Please enter Birthday</span>
+                    </mat-error>
+                  </mat-form-field>
+          
+                  <mat-form-field class="threeDivider">
+                    <mat-select placeholder="gender" formControlName="gender" [errorStateMatcher]="matcher" #gender>
+                      <mat-option *ngFor="let gender of genders" [value]="gender">{{gender}}</mat-option>
+                    </mat-select>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('gender').valid && registerForm.get('gender').touched">Please select one</span>
+                    </mat-error>
+                  </mat-form-field>
+                  <br>
+            
+                  <mat-form-field class="threeDivider">
+                    <input matInput maxlength="10" placeholder="ID number" formControlName="nic" [errorStateMatcher]="matcher" #nic>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('nic').valid && registerForm.get('nic').touched">Please enter NIC Number</span>
+                    </mat-error>
+                  </mat-form-field>
+            
+                  <mat-form-field class="threeDivider">
+                    <input matInput placeholder="email" formControlName="email" #email>
+                  </mat-form-field>
+                  <br>
+            
+                  <mat-form-field class="threeDivider">
+                    <input matInput type="tel" maxlength="10" placeholder="phone" formControlName="phone" [errorStateMatcher]="matcher" #phone>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('phone').valid && registerForm.get('phone').touched">Please enter Phone Number</span>
+                    </mat-error>
+                  </mat-form-field>
+            
+                  <mat-form-field class="threeDivider">
+                    <mat-select placeholder="constructor type" formControlName="cType" [errorStateMatcher]="matcher" #cType>
+                      <mat-option *ngFor="let cType of cTypes" [value]="cType">{{cType}}</mat-option>
+                    </mat-select>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('cType').valid && registerForm.get('cType').touched">Please enter constructor type</span>
+                    </mat-error>
+                  </mat-form-field>
+                  <br>
+          
+                  <mat-form-field class="threeDivider">
+                    <input matInput type="password" placeholder="password" formControlName="password" [errorStateMatcher]="matcher" #password>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched">Please enter a password</span>
+                    </mat-error>
+                  </mat-form-field>
+                  
+                  <mat-form-field class="threeDivider">
+                      <input matInput type="password" placeholder="confirm password" formControlName="rePassword" [errorStateMatcher]="matcher" #rePassword>
+                      <mat-error>
+                        <span *ngIf="!registerForm.get('rePassword').valid && registerForm.get('rePassword').touched">Please enter the password again</span>
+                      </mat-error>
+                    </mat-form-field>
+                  <br>
+              </form>
+              <div class="button-row">
+                <button type="submit" [disabled]="!registerForm.valid" (click)="registerConstructor(fName.value, mName.value, lName.value, line1.value, line2.value, line3.value, city.value, distric.value, birthday.value, gender.value, nic.value, email.value, phone.value, cType.value, password.value, rePassword.value)" mat-raised-button color="primary">Register</button>
+              </div>
+            </mat-card>
+      </div>
+    </div>
+</div>
+

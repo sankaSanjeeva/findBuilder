@@ -1,0 +1,109 @@
+<div class="container">
+    <div class="navbar">
+        <a href="#"><img class="logo" src="../../assets/homeImages/logo/logo.png" alt="logo"></a>
+        <div class="title">
+            <a href="#"><small>find</small>Builders</a>
+        </div>
+        <ul class="menu">
+            <li><a routerLink="/home" href="#">Home</a></li>   <!-- mat-button -->
+            <li id="active"><a routerLink="/about" href="#">About</a></li>
+            <li><a routerLink="/category" href="#">Category</a></li>
+            <li><a *ngIf="!authService.isLoggednIn()" routerLink="/register" href="#">Register</a></li>
+            <li><a *ngIf="!authService.isLoggednIn()" routerLink="/logIn" href="#">LogIn</a></li>
+            <li><a *ngIf="authService.isLoggednIn()" routerLink="/profile" href="#">Profile</a></li>
+            <li><a *ngIf="authService.isLoggednIn()" (click)="logOut()">LogOut</a></li>
+        </ul>
+    </div>
+
+    <div class="extra"></div>
+
+    <div class="details">
+
+        <mat-card class="welcome">
+            <mat-card-header class="matHeader">
+                <mat-card-title><h1>Hello {{details.fName}}</h1></mat-card-title>
+                <mat-card-subtitle><h3>Here is your dashboard</h3></mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="card-content">
+                    <img class="profilePic" src="http://localhost:3000/profilePic/{{nic}}.jpg" height="150px" alt="profilePic">
+                    <div>
+                        Edit your profile&nbsp;
+                        <button mat-raised-button (click)="editProfile()">Edit</button>
+                    </div><br>
+                    <div>
+                        Update a profile picture&nbsp;
+                        <input style="display: none" type="file" name="file" id="file" #fileInput (change)="onFileSelected($event)" />
+                        <button mat-raised-button>
+                            <label for="file">Choose</label>
+                        </button>
+                        <mat-list>
+                            <mat-list-item *ngIf="selectedFile">                  
+                                <mat-progress-bar class="progress-bar" mode="determinate" [value]="progress"></mat-progress-bar>&nbsp;
+                                <button mat-raised-button class="upload" type="button" (click)="onUpload()">Upload</button>
+                            </mat-list-item>
+                            </mat-list>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="welcome">
+            <mat-card-header class="matHeader">
+                <mat-card-title>Your Details</mat-card-title>
+                <mat-card-subtitle>your current details</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content> 
+                    <mat-list>
+                        <mat-list-item>
+                            Name : {{details.fName +" "+ details.mName +" "+ details.lName}}
+                        </mat-list-item>
+                    </mat-list>
+                    <mat-list>
+                        <mat-list-item>
+                            Address : {{details.line1 +", "+ details.line2 +", "+ details.line3}}
+                        </mat-list-item>
+                    </mat-list>
+                    <mat-list>
+                        <mat-list-item>
+                            City : {{details.city}}
+                        </mat-list-item>
+                    </mat-list>
+                    <mat-list>
+                        <mat-list-item>
+                            Distric : {{details.distric}}
+                        </mat-list-item>
+                    </mat-list>
+                    <mat-list>
+                        <mat-list-item>
+                            Gender : {{details.gender}}
+                        </mat-list-item>
+                    </mat-list>
+                    <mat-list>
+                        <mat-list-item>
+                            NIC : {{details.nic}}
+                        </mat-list-item>
+                    </mat-list>
+                    <mat-list>
+                        <mat-list-item>
+                            Email : {{details.phone}}
+                        </mat-list-item>
+                    </mat-list>
+                    <mat-list>
+                        <mat-list-item>
+                            Phone : {{details.phone}}
+                        </mat-list-item>
+                    </mat-list>
+                    <mat-list>
+                        <mat-list-item>
+                            Constructor Type : {{details.cType}}
+                        </mat-list-item>
+                    </mat-list>
+            </mat-card-content>
+        </mat-card>
+        
+    </div>
+</div>
+
+
+

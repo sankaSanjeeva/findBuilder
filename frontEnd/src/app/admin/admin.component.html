@@ -1,0 +1,277 @@
+<div class="admin">
+    <div class="navbar">
+        <a href="#"><img class="logo" src="../../assets/homeImages/logo/logo.png" alt="logo"></a>
+        <div class="title">
+            <a href="#"><small>find</small>Builders</a>
+        </div>
+        <ul class="menu">
+            <li><a routerLink="/home" href="#">Home</a></li>
+            <li id="active"><a routerLink="/about" href="#">About</a></li>
+            <li><a routerLink="/category" href="#">Category</a></li>
+            <li><a *ngIf="!authService.isLoggednIn()" routerLink="/register" href="#">Register</a></li>
+            <li><a *ngIf="!authService.isLoggednIn()" routerLink="/logIn" href="#">LogIn</a></li>
+            <li><a *ngIf="authService.isLoggednIn()" routerLink="/profile" href="#">Profile</a></li>
+            <li><a *ngIf="authService.isLoggednIn()" (click)="logOut()">LogOut</a></li>
+        </ul>
+    </div>
+
+    <div class="extra"></div>
+    <div class="content">
+        <mat-sidenav-container>
+            <mat-sidenav
+                #drawer
+                class="sidenav"
+                fixedInViewport="true"
+                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+                [mode]="(isHandset$ | async) ? 'over' : 'side'"
+                [opened]="!(isHandset$ | async)">
+                <mat-toolbar color="white"></mat-toolbar>
+                <mat-nav-list>
+                    <mat-accordion>
+                        <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                            Filter
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-accordion>
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                    by Type
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <a mat-list-item (click)="fetchConstructorsBycType('Architect')">Architect</a>
+                                <a mat-list-item (click)="fetchConstructorsBycType('Carpenter')">Carpenter</a>
+                                <a mat-list-item (click)="fetchConstructorsBycType('Consultant')">Consultant</a>                        
+                                <a mat-list-item (click)="fetchConstructorsBycType('Civil Engineer')">Civil Engineer</a>
+                                <a mat-list-item (click)="fetchConstructorsBycType('Electrician')">Electrician</a>
+                                <a mat-list-item (click)="fetchConstructorsBycType('Gardner')">Gardner</a>
+                                <a mat-list-item (click)="fetchConstructorsBycType('Helper')">Helper</a>
+                                <a mat-list-item (click)="fetchConstructorsBycType('Meson')">Meson</a>
+                                <a mat-list-item (click)="fetchConstructorsBycType('Landscaper')">Landscaper</a>
+                                <a mat-list-item (click)="fetchConstructorsBycType('Painter')">Painter</a>
+                                <a mat-list-item (click)="fetchConstructorsBycType('Plumber')">Plumber</a>
+                                <a mat-list-item (click)="fetchConstructorsBycType('Surveyor')">Surveyor</a>
+                                <a mat-list-item (click)="fetchConstructorsBycType('Steel Worker')">Steel Worker</a>
+                                <a mat-list-item (click)="fetchConstructorsBycType('Transporter')">Transporter</a>
+                                <a mat-list-item (click)="fetchConstructorsBycType('Valuer')">Valuer</a>
+                            </mat-expansion-panel>
+                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                    by Distric
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Ampara')">Ampara</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Anuradapura')">Anuradapura</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Badulla')">Badulla</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Batticaloa')">Batticaloa</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Colombo')">Colombo</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Galle')">Galle</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Gampaha')">Gampaha</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Hambantota')">Hambantota</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Jaffna')">Jaffna</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Kalutara')">Kalutara</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Kandy')">Kandy</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Kegalle')">Kegalle</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Killinochchi')">Killinochchi</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Kurunegala')">Kurunegala</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Mannar')">Mannar</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Matale')">Matale</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Matara')">Matara</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Monaragala')">Monaragala</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Mullaitivu')">Mullaitivu</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Nuwara Eliya')">Nuwara Eliya</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Polonnaruwa')">Polonnaruwa</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Puttalam')">Puttalam</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Ratnapura')">Ratnapura</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Trincomalee')">Trincomalee</a>
+                                <a mat-list-item (click)="fetchConstructorsByDistric('Vavuniya')">Vavuniya</a>
+                            </mat-expansion-panel>
+                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                    by Gender
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <a mat-list-item (click)="fetchConstructorsByGender('male')">Male</a>
+                                <a mat-list-item (click)="fetchConstructorsByGender('female')">Female</a>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel (opened)="panelOpenState = true"
+                                            (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                            Search
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-form-field>
+                            <input matInput placeholder="Name" #nameSearch>
+                            <span></span>
+                        </mat-form-field>
+                        <button mat-raised-button (click)="searchConstructorByName(nameSearch.value)"><mat-icon>search</mat-icon></button>
+                        <mat-form-field>
+                            <input matInput placeholder="City" #city>
+                        </mat-form-field>
+                        <button mat-raised-button (click)="searchConstructorByCity(city.value)"><mat-icon>search</mat-icon></button>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </mat-nav-list>
+            </mat-sidenav>
+            <mat-sidenav-content class="sidenav-content">
+                <mat-toolbar color="white">
+                <button
+                    type="button"
+                    aria-label="Toggle sidenav"
+                    mat-icon-button
+                    (click)="drawer.toggle()"
+                    *ngIf="isHandset$ | async">
+                    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+                </button>
+                <!-- <span>material</span> -->
+                </mat-toolbar>
+                <!-- Add Content Here -->
+                <div class="tabs">
+                    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="fetchRegisteredConstructors(false)">Unregistered</button>
+                        <button mat-menu-item (click)="fetchRegisteredConstructors(true)">Registerd</button>
+                    </mat-menu>
+                    <table mat-table [dataSource]="constructors" >
+
+                            <ng-container matColumnDef="profilePic">
+                                <th mat-header-cell *matHeaderCellDef ></th>
+                                <td mat-cell *matCellDef="let element"><img class="profilePic" src="http://localhost:3000/profilePic/{{element.nic}}.jpg" height="70px" alt="profilePic"></td>
+                            </ng-container>
+                
+                            <ng-container matColumnDef="first">
+                                <th mat-header-cell *matHeaderCellDef >Name</th>
+                                <td mat-cell *matCellDef="let element"> {{element.fName}} </td>
+                            </ng-container>
+                        
+                            <ng-container matColumnDef="city">
+                                <th mat-header-cell *matHeaderCellDef >City</th>
+                                <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+                            </ng-container>
+                        
+                            <ng-container matColumnDef="distric">
+                                <th mat-header-cell *matHeaderCellDef >Distric</th>
+                                <td mat-cell *matCellDef="let element"> {{element.distric}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="actions">
+                                <th mat-header-cell *matHeaderCellDef >Actions</th>
+                                <td mat-cell *matCellDef="let element">
+                                    <button mat-button color="primary" (click)="editConstructor(element._id)">Edit</button>
+                                    <button mat-button color="warn" (click)="deleteConstructor(element._id)">Delete</button>
+                                </td>
+                            </ng-container>
+                        
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/category/details/',row._id]"></tr>
+                        
+                        </table>
+                        <mat-paginator [length]="100"
+                            [pageSize]="10"
+                            [pageSizeOptions]="[5, 10, 25, 100]">
+                        </mat-paginator>
+                    <!-- <mat-tab-group>
+                        <mat-tab label="Active Constructors" >
+                            <mat-card class="details">
+                                <mat-card-content>
+                                    <table mat-table [dataSource]="constructors" >
+
+                                        <ng-container matColumnDef="profilePic">
+                                            <th mat-header-cell *matHeaderCellDef ></th>
+                                            <td mat-cell *matCellDef="let element"><img class="profilePic" src="http://localhost:3000/profilePic/{{element.nic}}.jpg" height="70px" alt="profilePic"></td>
+                                        </ng-container>
+                            
+                                        <ng-container matColumnDef="first">
+                                            <th mat-header-cell *matHeaderCellDef >Name</th>
+                                            <td mat-cell *matCellDef="let element"> {{element.fName}} </td>
+                                        </ng-container>
+                                    
+                                        <ng-container matColumnDef="city">
+                                            <th mat-header-cell *matHeaderCellDef >City</th>
+                                            <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+                                        </ng-container>
+                                    
+                                        <ng-container matColumnDef="distric">
+                                            <th mat-header-cell *matHeaderCellDef >Distric</th>
+                                            <td mat-cell *matCellDef="let element"> {{element.distric}} </td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="actions">
+                                            <th mat-header-cell *matHeaderCellDef >Actions</th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <button mat-button color="primary" (click)="editConstructor(element._id)">Edit</button>
+                                                <button mat-button color="warn" (click)="deleteConstructor(element._id)">Delete</button>
+                                            </td>
+                                        </ng-container>
+                                    
+                                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/category/details/',row._id]"></tr>
+                                    
+                                    </table>
+                                    <mat-paginator [length]="100"
+                                        [pageSize]="10"
+                                        [pageSizeOptions]="[5, 10, 25, 100]">
+                                    </mat-paginator>
+                                </mat-card-content>
+                            </mat-card>
+                        </mat-tab>
+                        <mat-tab label="Deactive Constructors">
+                            <mat-card class="details">
+                                <mat-card-content>
+                                    <table mat-table [dataSource]="constructors" >
+
+                                        <ng-container matColumnDef="profilePic">
+                                            <th mat-header-cell *matHeaderCellDef ></th>
+                                            <td mat-cell *matCellDef="let element"><img class="profilePic" src="http://localhost:3000/profilePic/{{element.nic}}.jpg" height="70px" alt="profilePic"></td>
+                                        </ng-container>
+                            
+                                        <ng-container matColumnDef="first">
+                                            <th mat-header-cell *matHeaderCellDef >Name</th>
+                                            <td mat-cell *matCellDef="let element"> {{element.fName}} </td>
+                                        </ng-container>
+                                    
+                                        <ng-container matColumnDef="city">
+                                            <th mat-header-cell *matHeaderCellDef >City</th>
+                                            <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+                                        </ng-container>
+                                    
+                                        <ng-container matColumnDef="distric">
+                                            <th mat-header-cell *matHeaderCellDef >Distric</th>
+                                            <td mat-cell *matCellDef="let element"> {{element.distric}} </td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="actions">
+                                            <th mat-header-cell *matHeaderCellDef >Actions</th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <button mat-button color="primary" (click)="editConstructor(element._id)">Edit</button>
+                                                <button mat-button color="warn" (click)="deleteConstructor(element._id)">Delete</button>
+                                            </td>
+                                        </ng-container>
+                                    
+                                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/category/details/',row._id]"></tr>
+                                    
+                                    </table>
+                                    <mat-paginator [length]="100"
+                                        [pageSize]="10"
+                                        [pageSizeOptions]="[5, 10, 25, 100]">
+                                    </mat-paginator>
+                                </mat-card-content>
+                            </mat-card>
+                        </mat-tab>
+                        <mat-tab label="Unregistered Constructors"></mat-tab>
+                    </mat-tab-group> -->
+                </div>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </div>
+</div>

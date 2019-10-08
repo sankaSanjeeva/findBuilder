@@ -1,0 +1,109 @@
+<div>
+  <mat-card class="mat-card">
+    <section>
+      <h3>Update Constructor</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="updateForm" class="edit-from">
+        <mat-form-field class="form-field">
+            <mat-select placeholder="approve" formControlName="register" [errorStateMatcher]="matcher" #register>
+              <mat-option *ngFor="let register of registers" [value]="register">{{register}}</mat-option>
+            </mat-select>
+            <mat-error>
+              <span *ngIf="!updateForm.get('register').valid && updateForm.get('register').touched">Please enter constructor type</span>
+            </mat-error>
+          </mat-form-field>
+        
+      <mat-form-field class="form-field">
+        <input matInput placeholder="fName" formControlName="fName" [errorStateMatcher]="matcher" #fName>
+        <mat-error>
+          <span *ngIf="!updateForm.get('fName').valid && updateForm.get('fName').touched">Please enter First Name</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <input matInput placeholder="mName" formControlName="mName" [errorStateMatcher]="matcher" #mName>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <input matInput placeholder="lName" formControlName="lName" [errorStateMatcher]="matcher" #lName>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="form-field">
+        <input matInput placeholder="line1" formControlName="line1" [errorStateMatcher]="matcher" #line1>
+        <mat-error>
+          <span *ngIf="!updateForm.get('line1').valid && updateForm.get('line1').touched">Please enter Address Line 1</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <input matInput placeholder="line2" formControlName="line2" [errorStateMatcher]="matcher" #line2>
+        <mat-error>
+          <span *ngIf="!updateForm.get('line2').valid && updateForm.get('line2').touched">Please enter Address Line 2</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <input matInput placeholder="line3" formControlName="line3" [errorStateMatcher]="matcher" #line3>
+        <mat-error>
+          <span *ngIf="!updateForm.get('line3').valid && updateForm.get('line3').touched">Please enter Address Line 3</span>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="form-field">
+        <input matInput placeholder="city" formControlName="city" [errorStateMatcher]="matcher" #city>
+        <mat-error>
+          <span *ngIf="!updateForm.get('city').valid && updateForm.get('city').touched">Please enter City</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-select placeholder="distric" formControlName="distric" [errorStateMatcher]="matcher" #distric>
+          <mat-option *ngFor="let distric of districs" [value]="distric">{{distric}}</mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="!updateForm.get('distric').valid && updateForm.get('distric').touched">Please enter Distric</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <input matInput [matDatepicker]="picker" placeholder="birthday" formControlName="birthday" [errorStateMatcher]="matcher" #birthday>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>
+          <span *ngIf="!updateForm.get('birthday').valid && updateForm.get('birthday').touched">Please enter Birthday</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-select placeholder="gender" formControlName="gender" [errorStateMatcher]="matcher" #gender>
+          <mat-option *ngFor="let gender of genders" [value]="gender">{{gender}}</mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="!updateForm.get('gender').valid && updateForm.get('gender').touched">Please select one</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <input matInput maxlength="10"placeholder="ID number" formControlName="nic" [errorStateMatcher]="matcher" #nic>
+        <mat-error>
+          <span *ngIf="!updateForm.get('nic').valid && updateForm.get('nic').touched">Please enter NIC Number</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <input matInput placeholder="email" formControlName="email" [errorStateMatcher]="matcher" #email>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <input matInput maxlength="10" placeholder="phone" formControlName="phone" [errorStateMatcher]="matcher" #phone>
+        <mat-error>
+          <span *ngIf="!updateForm.get('phone').valid && updateForm.get('phone').touched">Please enter Phone Number</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-select placeholder="constructor type" formControlName="cType" [errorStateMatcher]="matcher" #cType>
+          <mat-option *ngFor="let cType of cTypes" [value]="cType">{{cType}}</mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="!updateForm.get('cType').valid && updateForm.get('cType').touched">Please enter constructor type</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <br><br>
+      <button mat-raised-button color="accent" routerLink="/admin">Back</button>&nbsp;
+      <button mat-raised-button color="primary" type="submit" [disabled]="!updateForm.valid" (click)="updateConstructor(register.value, fName.value, mName.value, lName.value, line1.value, line2.value, line3.value, city.value, distric.value, birthday.value, gender.value, nic.value, email.value, phone.value, cType.value)">Update</button>
+    </form>
+  </mat-card>
+</div>

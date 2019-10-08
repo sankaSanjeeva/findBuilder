@@ -1,0 +1,14 @@
+.edit-from{
+    min-width: 150px;
+    width: 100%;
+}
+
+.form-field{
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 40%;
+}
+
+.mat-card{
+    margin: 4% 5%;
+}

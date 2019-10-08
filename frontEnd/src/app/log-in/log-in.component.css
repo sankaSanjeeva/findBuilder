@@ -1,0 +1,75 @@
+.container{
+  width: 100%;
+}
+
+.logo{
+  height: 60px;
+  widows: auto;
+  padding-left: 10px;
+  float: left;
+}
+
+.title{
+  padding-top: 20px;
+  padding-left: 10px;
+  float: left;
+}
+
+.title a {
+  color: white;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+}
+
+.title a:hover {
+  font-size: 26px;
+  color: darkturquoise;
+}
+
+.menu{
+  padding-top: 10px;
+  float: right;
+  list-style: none;
+}
+
+.menu li{
+  display: inline;
+}
+
+.menu li a{
+  color: white;
+  text-decoration: none;
+  padding: 5px 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+}
+
+.menu li a:hover{
+  color: darkturquoise;
+}
+.navbar{
+  height: 10%;
+  width: 100%;
+  background-color: #333;
+  position: fixed;
+  z-index: 500 !important;
+  margin: 0%;
+}
+
+.extra{
+  height: 10%;
+  width: 100%;
+}
+
+.login{
+  height: 65%;
+  width: 100%;
+
+}
+
+.matCard{
+  margin-left: 38%;
+  margin-top: 10%;
+  width: 20%;
+}
